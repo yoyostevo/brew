@@ -1,0 +1,25 @@
+-@ val calc: Double = 0.0
+
+- attributes("title") = "Brew: Water"
+- attributes("headline") = "Water"
+
+form(action="/brew/water" method="post")
+  input(type="text" name="litres") Litres
+  br
+  input(type="text" name="kilos") Kilos
+  br
+  input(type="text" name="starttemp") Start Temp
+  br
+  input(type="text" name="targettemp") Target Temp
+  br
+  input(type="radio" name="calctype" value="strike") Strike
+  input(type="radio" name="calctype" value="add") Add
+  br
+  input(type="submit" value="Calculate")
+
+P
+  - calc match
+    - case 0.0 =>
+      = ""
+    - case x =>
+      = "Result: " + "%.1f".format(calc)

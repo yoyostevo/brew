@@ -1,0 +1,19 @@
+
+-@ val calc: Double = 0.0
+
+- attributes("title") = "Brew: Water"
+- attributes("headline") = "Water"
+
+form(action="/brew/alcohol" method="post")
+  input(type="text" name="og") Original Gravity
+  br
+  input(type="text" name="fg") Final Gravity
+  br
+  input(type="submit" value="Calculate")
+
+P
+  - calc match
+    - case 0.0 =>
+      = ""
+    - case x =>
+      = "Result: " + "%.1f".format(calc) + "%"

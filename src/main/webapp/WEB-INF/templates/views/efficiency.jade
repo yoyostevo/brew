@@ -1,0 +1,24 @@
+-@ val calc: Double = 0.0
+- attributes("title") = "Brew Efficiency Calculator"
+- attributes("headline") = "Efficiency Calculator"
+- import org.bigsteve.brew.BrewCalcs._
+
+form(action="/brew/efficiency" method="post")
+  p Fermentables
+  - for( (i, j) <- maltLookup.toList sortBy {_._2} )
+    input(type="text" name="#{i}" value="0") #{i}
+    br
+  br
+  p Wort stats
+  input(type="text" name="wort") Litres wort
+  br
+  input(type="text" name="og") Original Gravity
+  br
+  input(type="submit" value="Calculate")
+
+P
+  - calc match
+    - case 0.0 =>
+      = ""
+    - case x =>
+      = "Efficiency: " + "%.1f".format(calc * 100) + "%" 
