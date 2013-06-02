@@ -5,9 +5,6 @@ import org.scalatra.sbt.PluginKeys._
 import com.mojolly.scalate.ScalatePlugin._
 import ScalateKeys._
 
-import com.typesafe.sbt.SbtStartScript
-seq(SbtStartScript.startScriptForClassesSettings: _*)
-
 object BrewBuild extends Build {
   val Organization = "org.bigsteve"
   val Name = "brew"
@@ -45,5 +42,6 @@ object BrewBuild extends Build {
         )
       }
     )
+ ++ seq(com.typesafe.startscript.StartScriptPlugin.startScriptForClassesSettings: _*)
   )
 }
