@@ -53,4 +53,6 @@ object BrewCalcs {
   def addWater(l: Double, kg: Double, t1: Double, t2: Double): Double =
     (t2 - t1) * (0.41 * kg + l) / (100 - t2)
 
+  def sgTempCorrection(t: Double): Double =
+    -4.544e-3 + t * 1.696e-4 + t * t * 2.806e-6
 }
